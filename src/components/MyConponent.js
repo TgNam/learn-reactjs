@@ -8,7 +8,11 @@ class MyConponent extends React.Component {
     }
     hendleClick(event){
         console.log(">>>click me my button")
-        console.log(this.state.name)
+        console.log("My name is"+this.state.name)
+        this.setState({
+            name: "TungTai",
+            age: Math.floor(Math.random() * 100+ 1)
+        })
     }
     hendleOnMoverOver(event){
         console.log(event)
@@ -17,9 +21,9 @@ class MyConponent extends React.Component {
     render() {
         return (
             <div>
-                My  name is {this.state.name} and I'm from {this.state.address}. I'm {this.state.age} yeard old\
+                My  name is {this.state.name} and I'm from {this.state.address}. I'm {this.state.age} years old
                 <button onMouseOver={this.hendleOnMoverOver}>Click me</button>
-                <button onClick={this.hendleClick}>Click me</button>
+                <button onClick={(event)=> {this.hendleClick(event)} }>Click me</button>
             </div>
         );
     }
