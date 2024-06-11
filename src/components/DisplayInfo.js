@@ -1,6 +1,6 @@
 import React from "react";
 import './DisplayInfo.scss'
-
+import logo from './../logo.jpg'
 class DisplayInfor extends React.Component {
     state = {
         isShowListUser: true
@@ -15,8 +15,9 @@ class DisplayInfor extends React.Component {
         const { listArr } = this.props
         console.table(listArr)
         return (
-            <div>
-                <div className="display-info-conatier">
+            <div className="display-info-conatier">
+                <img src={logo} alt="Logo" />
+                <div >
                     <span onClick={() => { this.hendleShowHide() }}>{this.state.isShowListUser===true?"Hide list users:":"Show list users:"}</span>
                 </div>
                 {this.state.isShowListUser &&
