@@ -1,5 +1,5 @@
 import React from "react";
-
+import './DisplayInfo.scss'
 
 class DisplayInfor extends React.Component {
     state = {
@@ -16,7 +16,7 @@ class DisplayInfor extends React.Component {
         console.table(listArr)
         return (
             <div>
-                <div>
+                <div className="display-info-conatier">
                     <span onClick={() => { this.hendleShowHide() }}>{this.state.isShowListUser===true?"Hide list users:":"Show list users:"}</span>
                 </div>
                 {this.state.isShowListUser &&
