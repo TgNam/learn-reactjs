@@ -1,11 +1,16 @@
 import React from "react";
 
 class AddUserInfo extends React.Component {
-    state = {
+    constructor(props){
+        super(props);
+        //babel comiler
+        this.state = {
         name: "Nam",
         address: "HaiDuong",
         age: 19
     }
+    }
+    
     hendleOnChangeName = (event) => {
         this.setState({
             name: event.target.value,
