@@ -11,31 +11,36 @@ class MyConponent extends React.Component {
         ]
     }
     handleAddNewUser = (userObj) => {
-    this.setState(
-        {
-            listArr: [...this.state.listArr, userObj]
-        }
-    );
-    
+        this.setState(
+            {
+                listArr: [...this.state.listArr, userObj]
+            }
+        );
+
     }
-// handleAddNewUser = (userObj) => {
-//     this.setState((prevState) => ({
-//         listArr: [...prevState.listArr, userObj]
-//     }));
-// }
+    // handleAddNewUser = (userObj) => {
+    //     this.setState((prevState) => ({
+    //         listArr: [...prevState.listArr, userObj]
+    //     }));
+    // }
 
     //JSX
     render() {
         return (
-            <div>
-                <AddUserInfo
-                    handleAddNewUser={this.handleAddNewUser}
-                />
-                <br /><br />
-                <DisplayInfor
-                    listArr={this.state.listArr}
-                />
-            </div>
+            <>{/*React.Fragment*/}
+                <div className='a'>
+                    <AddUserInfo
+                        handleAddNewUser={this.handleAddNewUser}
+                    />
+                    <br /><br />
+                    <DisplayInfor
+                        listArr={this.state.listArr}
+                    />
+                </div>
+                <div className='b'>
+
+                </div>
+            </>
         );
     }
 }
