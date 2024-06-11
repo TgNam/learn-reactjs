@@ -1,6 +1,6 @@
 import React from "react";
 
-class UserInfo extends React.Component {
+class AddUserInfo extends React.Component {
     state = {
         name: "Nam",
         address: "HaiDuong",
@@ -16,9 +16,20 @@ class UserInfo extends React.Component {
             age: event.target.value
         })
     }
+    hendleOnChangeAddress = (event) => {
+        this.setState({
+            address: event.target.value
+        })
+    }
     hendleOnSubmit = (event) => {
         event.preventDefault();
-        console.log("My name is" + this.state.name)
+        // console.log("My name is" + this.state.name)
+        this.props.handleAddNewUser({
+            id: Math.floor((Math.random() * 100) + 1) + '-random',
+            name: this.state.name,
+            age: +this.state.age,
+            address:this.state.address
+        });
     }
     render() {
         return (
@@ -27,18 +38,27 @@ class UserInfo extends React.Component {
 
                 <form onSubmit={(event) => this.hendleOnSubmit(event)}>
                     <label>Your name:</label>
+                    <br/>
                     <input type='text'
                         value={this.state.name}
                         onChange={(event) => { this.hendleOnChangeName(event) }} />
-                    <button>Click me</button>
+                    <br/>
                     <label>Your age:</label>
+                    <br/>
                     <input type='text'
                         value={this.state.age}
                         onChange={(event) => { this.hendleOnChangeAge(event) }} />
+                    <br/>
+                    <label>Your address:</label>
+                    <br/>
+                    <input type='text'
+                        value={this.state.address}
+                        onChange={(event) => { this.hendleOnChangeAddress(event) }} />
+                    <br/>
                     <button>Click me</button>
                 </form>
             </div>
         )
     }
 }
-export default UserInfo;
+export default AddUserInfo;
