@@ -1,6 +1,6 @@
 import React from "react";
 import './DisplayInfo.scss'
-import logo from './../logo.jpg'
+// import logo from './../logo.jpg'
 class DisplayInfor extends React.Component {
     state = {
         isShowListUser: true
@@ -10,20 +10,20 @@ class DisplayInfor extends React.Component {
             isShowListUser: !this.state.isShowListUser
         })
     }
+
     render() {
         console.log(this.props)
         const { listArr } = this.props
         console.table(listArr)
         return (
             <div className="display-info-conatier">
-                <img src={logo} alt="Logo" />
+                {/* <img src={logo} alt="Logo" /> */}
                 <div >
-                    <span onClick={() => { this.hendleShowHide() }}>{this.state.isShowListUser===true?"Hide list users:":"Show list users:"}</span>
+                    <span onClick={() => { this.hendleShowHide() }}>{this.state.isShowListUser === true ? "Hide list users:" : "Show list users:"}</span>
                 </div>
                 {this.state.isShowListUser &&
-                    <div>
+                    <>
                         {listArr.map((item) => {
-                            if (item.age < 20) {
                                 return (
                                     <div key={item.id}>
                                         <div className={item.age > 18 ? "red" : "green"}>
@@ -31,15 +31,13 @@ class DisplayInfor extends React.Component {
                                             <div>My name's {item.name}</div>
                                             <div>I'm {item.age} years old</div>
                                             <div>I'm from {item.address}</div>
+                                            <button onClick={() => this.props.handleDeleteUser(item.id)}>X</button>
                                             <hr />
                                         </div>
                                     </div>
                                 )
-                            } else {
-                                return null;
-                            }
                         })}
-                    </div>
+                    </>
                 }
             </div>
         )
