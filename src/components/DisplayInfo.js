@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './DisplayInfo.scss'
 // import logo from './../logo.jpg'
 // class DisplayInfor extends React.Component {
@@ -32,9 +32,18 @@ import './DisplayInfo.scss'
 // }
 const DisplayInfor = (props) => {
     const { listArr } = props
+    const [isShowHideListUser, setShowHideListUser] = useState(true);
+    const handShowHideListUser = () => {
+        setShowHideListUser(!isShowHideListUser)
+    }
     return (
         <div className="display-info-conatier">
-            {true &&
+            <div>
+                <span onClick={() => handShowHideListUser()}>
+                    {isShowHideListUser === true ? "Hide list users" : "Show list users"}
+                </span>
+            </div>
+            {isShowHideListUser &&
                 <>
                     {listArr.map((item) => {
                         return (
