@@ -1,10 +1,15 @@
 import './App.scss';
-import MyConponent from './components/MyConponent';
+import Header from './components/header/header';
+import { Outlet, Link } from 'react-router-dom';
 function App() {
   return (
     <div className='App-container'>
-      <h1>Hello World</h1>
-      {/* <MyConponent /> */}
+      <div className='header-container'>
+        <Header />
+      </div>
+      <div className='body'>
+        <Outlet />
+      </div>
     </div>
   );
 }
