@@ -7,26 +7,32 @@ const AddUserInfo = (props) => {
         age: 19
     };
     const [state, setState] = useState(initState);
+    const [stateName, setStateName] = useState("Nam");
+    const [stateAge, setStateAge] = useState(19);
+    const [stateAddress, setStateAddress] = useState("Hải Dương");
 
     const handleOnChangeName = (event) => {
-        setState((prevState) => ({
-            ...prevState,
-            name: event.target.value,
-        }));
+        // setState((prevState) => ({
+        //     ...prevState,
+        //     name: event.target.value,
+        // }));
+        setStateName(event.target.value)
     };
 
     const handleOnChangeAge = (event) => {
-        setState((prevState) => ({
-            ...prevState,
-            age: event.target.value
-        }));
+        // setState((prevState) => ({
+        //     ...prevState,
+        //     age: event.target.value
+        // }));
+        setStateAge(event.target.value)
     };
 
     const handleOnChangeAddress = (event) => {
-        setState((prevState) => ({
-            ...prevState,
-            address: event.target.value
-        }));
+        // setState((prevState) => ({
+        //     ...prevState,
+        //     address: event.target.value
+        // }));
+        setStateAddress(event.target.value)
     };
 
     const handleOnSubmit = (event) => {
@@ -42,14 +48,14 @@ const AddUserInfo = (props) => {
 
     return (
         <div>
-            My name is {state.name} and I'm from {state.address}. I'm {state.age} years old.
+            My name is {stateName} and I'm from {stateAddress}. I'm {stateAge} years old.
 
             <form onSubmit={handleOnSubmit}>
                 <label>Your name:</label>
                 <br />
                 <input
                     type="text"
-                    value={state.name}
+                    value={stateName}
                     onChange={handleOnChangeName}
                 />
                 <br />
@@ -57,7 +63,7 @@ const AddUserInfo = (props) => {
                 <br />
                 <input
                     type="text"
-                    value={state.age}
+                    value={stateAge}
                     onChange={handleOnChangeAge}
                 />
                 <br />
@@ -65,7 +71,7 @@ const AddUserInfo = (props) => {
                 <br />
                 <input
                     type="text"
-                    value={state.address}
+                    value={stateAddress}
                     onChange={handleOnChangeAddress}
                 />
                 <br />

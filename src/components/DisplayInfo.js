@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './DisplayInfo.scss'
 const DisplayInfor = (props) => {
     const { listArr } = props
@@ -6,6 +6,9 @@ const DisplayInfor = (props) => {
     const handShowHideListUser = () => {
         setShowHideListUser(!isShowHideListUser)
     }
+    useEffect(()=>{
+        
+    });
     return (
         <div className="display-info-conatier">
             <div>
