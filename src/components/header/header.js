@@ -3,10 +3,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 const Header = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
-            <Container>
+            <Container fluid>
                 {/* <Navbar.Brand href="/">Nguyễn Trường Nam</Navbar.Brand> */}
                 <NavLink to={"/"} className='navbar-brand'>Nguyễn Trường Nam</NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,13 +18,8 @@ const Header = () => {
                         <NavLink to={"/admins"} className='nav-link'>Admin</NavLink>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Settings" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Profile</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
+                        <Button className='btn-login mx-2 px-4 py-2' variant="light">Log in</Button>
+                        <Button className='btn-signup mx-2 px-4 py-2' variant="dark">Sign up</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

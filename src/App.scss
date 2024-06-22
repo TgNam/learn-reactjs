@@ -39,7 +39,9 @@
 
 .App-container{
   .header-container{
-    .navbar-nav{
+    .navbar{
+      z-index: 10;
+      background-color: rgba(0,0,0,0) !important;
       .nav-link{
         &.active{
           color: red;
@@ -49,5 +51,12 @@
     // .navbar-nav .nav-link.active{
     //   color: red;
     // }
+  }
+}
+.homepage-container{
+  .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }
