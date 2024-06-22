@@ -5,10 +5,10 @@ function App() {
   return (
     <div className='App-container'>
       <div className='header-container'>
-        <Header />
+        <Header/>
       </div>
       <div className='body'>
-        <Outlet />
+        <Outlet/>
       </div>
     </div>
   );
