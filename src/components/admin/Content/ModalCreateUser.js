@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './ModalCreateUser.scss'
 import axios from "axios";
+import { toast } from 'react-toastify';
 const ModalCreateUser = () => {
     const [show, setShow] = useState(false);
 
@@ -27,14 +28,14 @@ const ModalCreateUser = () => {
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
-    
+
     const validateEmail = (email) => {
         return String(email)
-          .toLowerCase()
-          .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          );
-      };
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
 
     const [previewImage, setPreviewImage] = useState("")
     const handUploadImage = (event) => {
@@ -54,9 +55,13 @@ const ModalCreateUser = () => {
         //     userImage: image
         // }
         // console.log(data)
-        const isValidateEmail =validateEmail(email)
-        if(!isValidateEmail){
-            alert('invalid email')
+        const isValidateEmail = validateEmail(email)
+        if (!isValidateEmail) {
+            toast.error("invalid email")
+            return;
+        }
+        if (!password) {
+            toast.error("invalid password")
             return;
         }
 
@@ -69,9 +74,14 @@ const ModalCreateUser = () => {
         data.append('userImage', image);
 
         let res = await axios.post('http://localhost:8081/api/v1/participant', data);
-        console.log(">>>>>check var", res)
-
-        handleClose()
+        if (res.data && res.data.EC === 0) {
+            toast.success(res.data.EM)
+            handleClose()
+        }
+        if (res.data && res.data.EC !== 0) {
+            toast.error(res.data.EM)
+        }
+        
     }
     return (
         <>
