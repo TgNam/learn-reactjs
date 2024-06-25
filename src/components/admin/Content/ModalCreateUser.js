@@ -27,6 +27,14 @@ const ModalCreateUser = () => {
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
+    
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      };
 
     const [previewImage, setPreviewImage] = useState("")
     const handUploadImage = (event) => {
@@ -46,6 +54,13 @@ const ModalCreateUser = () => {
         //     userImage: image
         // }
         // console.log(data)
+        const isValidateEmail =validateEmail(email)
+        if(!isValidateEmail){
+            alert('invalid email')
+            return;
+        }
+
+        //submit data
         const data = new FormData();
         data.append('email', email);
         data.append('password', password);
