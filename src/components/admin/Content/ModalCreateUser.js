@@ -7,12 +7,18 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './ModalCreateUser.scss'
+import axios from "axios";
 const ModalCreateUser = () => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
         setShow(false)
-        console.log(email + password + username + role)
+        setEmail("")
+        setPasswork("")
+        setUsername("")
+        setRole("USER")
+        setImage("")
+        setPreviewImage("")
     };
     const handleShow = () => setShow(true);
 
@@ -30,6 +36,27 @@ const ModalCreateUser = () => {
         } else {
             setPreviewImage("")
         }
+    }
+    const handleSubmitCreate = async () => {
+        // let data = {
+        //     email: email,
+        //     password: password,
+        //     username: username,
+        //     role: role,
+        //     userImage: image
+        // }
+        // console.log(data)
+        const data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('userImage', image);
+
+        let res = await axios.post('http://localhost:8081/api/v1/participant', data);
+        console.log(">>>>>check var", res)
+
+        handleClose()
     }
     return (
         <>
@@ -121,8 +148,8 @@ const ModalCreateUser = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                    <Button variant="primary" onClick={handleSubmitCreate}>
+                        Save
                     </Button>
                 </Modal.Footer>
             </Modal>
